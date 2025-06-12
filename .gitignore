@@ -1,0 +1,24 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.log
+.pytest_cache/
+
+# Data
+data/
+# Or if you want to track some data files, but ignore temporary ones:
+# data/*.csv
+# data/*.json
+# data/*.db
+
+# IDEs
+.idea/        # PyCharm
+.vscode/      # VS Code
+*.iml         # IntelliJ IDEA
+
+# OS
+.DS_Store     # macOS
+
+# Models (where trained ML models will be saved)
+models/
