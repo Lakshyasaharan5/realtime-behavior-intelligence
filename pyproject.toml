@@ -1,0 +1,19 @@
+[project]
+name = "realtime_behavior_intelligence"
+version = "0.1.0"
+description = "Tracks apps and network usage and applies ML to detect anomaly from normal behavior"
+authors = [
+    {name = "Lakshya Saharan",email = "lakshyasaharan@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11, <3.13"
+dependencies = [
+    "psutil (>=7.0.0,<8.0.0)",
+    "scapy (>=2.6.1,<3.0.0)",
+    "pandas (>=2.3.0,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
