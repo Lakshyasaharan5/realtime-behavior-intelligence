@@ -3,13 +3,8 @@ import time
 from datetime import datetime
 import re
 import json
+import queue
 from config.config import NETTOP_DELAY
-
-def wait_until_next_minute_mark():
-    now = datetime.now()
-    seconds = now.second + now.microsecond / 1_000_000
-    wait_time = 60 - seconds
-    time.sleep(wait_time)
 
 def run_nettop_command():
     result = subprocess.run(
@@ -59,15 +54,13 @@ def parse_nettop_output(nettop_output):
                     "out": out_bytes
                 }
 
-    print(json.dumps(output, indent=2))
+    return json.dumps(output, indent=2)
 
-# Main loop
-def main():
-    while True:
-        print(datetime.now().strftime("%H:%M:%S"))
+def watcher_thread_func(q: queue.Queue):
+   while True:
+        current_timestamp = datetime.now()
         nettop_output = run_nettop_command()
-        parse_nettop_output(nettop_output)
+        result = parse_nettop_output(nettop_output)
+        q.put((current_timestamp, result))
 
-if __name__ == "__main__":
-    wait_until_next_minute_mark()
-    main()
+   
