@@ -22,3 +22,10 @@ data/
 
 # Models (where trained ML models will be saved)
 models/
+
+# Influx DB credentials
+.env
+
+# Short term temp files for quick testing
+scratch/
+
