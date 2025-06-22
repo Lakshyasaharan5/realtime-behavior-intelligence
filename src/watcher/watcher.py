@@ -54,7 +54,7 @@ def parse_nettop_output(nettop_output):
                     "out": out_bytes
                 }
 
-    return json.dumps(output, indent=2)
+    return output    # json.dumps(output, indent=2)
 
 def watcher_thread_func(q: queue.Queue):
    while True:
