@@ -14,8 +14,11 @@ dependencies = [
     "influxdb3-python (>=0.14.0,<0.15.0)",
     "python-dotenv (>=1.1.0,<2.0.0)",
     "dotenv (>=0.9.9,<0.10.0)",
+    "tensorflow (>=2.19.0,<3.0.0)",
 ]
 
+[tool.poetry]
+packages = [{include = "src"}]  # This tells Poetry where your Python packages are
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
