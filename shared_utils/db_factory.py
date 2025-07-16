@@ -1,5 +1,3 @@
-# Import .env and config file params
-import sys
 import os
 from dotenv import load_dotenv
 
@@ -25,3 +23,6 @@ def create_influxdb_service():
     }
     db = InfluxDBService(INFLUXDB_PARAMS)
     return db
+
+if __name__=="__main__":
+    create_influxdb_service()

@@ -1,8 +1,6 @@
 import subprocess
-import time
 from datetime import datetime
 import re
-import json
 import queue
 from config.config import NETTOP_DELAY
 
