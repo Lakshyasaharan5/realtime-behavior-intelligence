@@ -1,8 +1,8 @@
 import subprocess
 from datetime import datetime
 import re
-import queue
 from config.config import NETTOP_DELAY
+from shared_utils.kafka_util import KafkaNetworkProducer
 
 def run_nettop_command():
     result = subprocess.run(
@@ -54,11 +54,22 @@ def parse_nettop_output(nettop_output):
 
     return output    # json.dumps(output, indent=2)
 
-def watcher_thread_func(q: queue.Queue):
-   while True:
-        current_timestamp = datetime.now()
-        nettop_output = run_nettop_command()
-        result = parse_nettop_output(nettop_output)
-        q.put((current_timestamp, result))
-
-   
+def watcher_thread_func(kafka_producer: KafkaNetworkProducer):
+    try:
+        while True:
+            current_timestamp = datetime.now()
+            nettop_output = run_nettop_command()
+            result = parse_nettop_output(nettop_output)
+            
+            # Send to Kafka instead of queue
+            success = kafka_producer.send_network_data(current_timestamp, result)
+            
+            if success:
+                print(f"✅ Sent data to Kafka: {current_timestamp.strftime('%H:%M:%S')}")
+            else:
+                print(f"❌ Failed to send to Kafka: {current_timestamp.strftime('%H:%M:%S')}")
+                
+    except KeyboardInterrupt:
+        print("Watcher stopping...")
+    finally:
+        kafka_producer.close()

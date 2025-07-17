@@ -340,6 +340,26 @@ polars = ["polars"]
 test = ["pytest", "pytest-cov", "pytest-httpserver"]
 
 [[package]]
+name = "kafka-python"
+version = "2.2.15"
+description = "Pure Python client for Apache Kafka"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "kafka_python-2.2.15-py2.py3-none-any.whl", hash = "sha256:84c0993cd4f7f2f01e92d8104ea9bdf631aff72fc5e6ea62eb3bdf1d56528fc3"},
+    {file = "kafka_python-2.2.15.tar.gz", hash = "sha256:e0f480a45f3814cb0eb705b8b4f61069e1be61dae0d8c69d0f1f2da33eea1bd5"},
+]
+
+[package.extras]
+benchmarks = ["pyperf"]
+crc32c = ["crc32c"]
+lz4 = ["lz4"]
+snappy = ["python-snappy"]
+testing = ["mock ; python_version < \"3.3\"", "pytest", "pytest-mock", "pytest-timeout"]
+zstd = ["zstandard"]
+
+[[package]]
 name = "keras"
 version = "3.10.0"
 description = "Multi-backend Keras"
@@ -541,8 +561,8 @@ files = [
 
 [package.dependencies]
 numpy = [
+    {version = ">=1.23.3", markers = "python_version >= \"3.11\""},
     {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
-    {version = ">=1.23.3", markers = "python_version == \"3.11\""},
 ]
 
 [package.extras]
@@ -797,8 +817,8 @@ files = [
 
 [package.dependencies]
 numpy = [
-    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
     {version = ">=1.23.2", markers = "python_version == \"3.11\""},
+    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
 ]
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
@@ -1410,4 +1430,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11, <3.13"
-content-hash = "f620c81c8c8187e21a9bab34f87f7dd333e366b8b8cc58ad7d881dabff328505"
+content-hash = "43a74e20adc26ce53a50842fca450b3bd72c414e5819ca5f254faadd4ac7d136"

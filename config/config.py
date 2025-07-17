@@ -18,3 +18,8 @@ INFLUXDB3_AUTH_TOKEN = "default_placeholder_token_do_not_use_in_prod"
 # You can also add more complex configuration structures if needed
 APP_NAME = "realtime_behavior_intelligence"
 LOG_LEVEL = "INFO"
+
+# Kafka Configuration
+KAFKA_BOOTSTRAP_SERVERS = "localhost:9092"
+KAFKA_TOPIC_NETWORK_DATA = "network-metrics"
+KAFKA_CONSUMER_GROUP = "network-collector"
