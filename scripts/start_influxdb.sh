@@ -31,7 +31,6 @@ set +a # Turn off automatic export after .env is loaded
 
 # --- Configuration ---
 NODE_ID="host01"
-CLUSTER_ID="cluster01"
 
 # Define DATA_DIR relative to the determined PROJECT_ROOT
 DATA_DIR="$PROJECT_ROOT/data/influxdb3_data"
@@ -47,7 +46,6 @@ mkdir -p "$DATA_DIR"
 # 'exec' replaces the current shell process with influxdb3, so CTRL+C works directly
 exec influxdb3 serve \
   --node-id "$NODE_ID" \
-  --cluster-id "$CLUSTER_ID" \
   --object-store file \
   --data-dir "$DATA_DIR"
 
