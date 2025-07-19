@@ -12,7 +12,7 @@ services:
     volumes:
       - type: bind
         # Path to store data on your host system
-        source: ../data
+        source: ../data/influxdb3
         # Path to store data in the container
         target: /var/lib/influxdb3/data
   broker:
@@ -37,3 +37,16 @@ services:
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
       KAFKA_LOG_DIRS: /tmp/kraft-combined-logs
       CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - type: bind
+        # Path to store data on your host system
+        source: ../data/grafana
+        # Path to store data in the container
+        target: /var/lib/grafana
+    
