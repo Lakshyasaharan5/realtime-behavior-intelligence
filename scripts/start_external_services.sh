@@ -9,9 +9,9 @@ echo "Starting InfluxDB, Kafka and Grafana via Docker Compose..."
 exec docker compose -f "$COMPOSE_FILE" up 
 
 if [ $? -eq 0 ]; then
-  echo "✅ External services started successfully."
+  echo "External services started successfully."
 else
-  echo "❌ Failed to start external services."
+  echo "Failed to start external services."
   exit 1
 fi
 

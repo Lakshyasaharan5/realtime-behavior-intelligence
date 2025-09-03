@@ -33,7 +33,7 @@ class Autoencoder:
         self.threshold = None
 
     def fit(self, X_train):
-        print(f"🚀 Training autoencoder....")
+        print(f"Training autoencoder....")
         
         history = self.model.fit(
             X_train, X_train,  # Input = Output (reconstruction task)
@@ -44,7 +44,7 @@ class Autoencoder:
         )
         
         final_loss = history.history['loss'][-1]
-        print(f"✅ Training complete! Final loss: {final_loss:.6f}")  
+        print(f"Training complete! Final loss: {final_loss:.6f}")  
 
     def evaluate(self, X_test):
         # Get reconstruction
@@ -66,14 +66,14 @@ class Autoencoder:
         max_training_error = max(training_errors)
         self.threshold = max_training_error * tolerance
         
-        print(f"📈 Training errors: {training_errors}")
-        print(f"🎯 Threshold set to: {self.threshold:.6f} ({tolerance}x max training error)")    
+        print(f"Training errors: {training_errors}")
+        print(f"Threshold set to: {self.threshold:.6f} ({tolerance}x max training error)")    
 
     def detect_anomaly(self, test_day):
         error = self.evaluate(test_day)
         is_anomaly = error > self.threshold
 
         status = "ANOMALY" if is_anomaly else "NORMAL"
-        print(f"🔍 Reconstruction error: {error:.6f} - {status}")
+        print(f"Reconstruction error: {error:.6f} - {status}")
         
         return is_anomaly

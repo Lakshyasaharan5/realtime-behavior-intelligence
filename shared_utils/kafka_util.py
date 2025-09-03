@@ -84,7 +84,7 @@ def create_topic_if_not_exists():
     try:
         existing_topics = admin_client.list_topics()
         if KAFKA_TOPIC_NETWORK_DATA in existing_topics:
-            print(f"✅ Topic '{KAFKA_TOPIC_NETWORK_DATA}' already exists")
+            print(f"Topic '{KAFKA_TOPIC_NETWORK_DATA}' already exists")
             return
         
         topic = NewTopic(
@@ -94,9 +94,9 @@ def create_topic_if_not_exists():
         )
         
         admin_client.create_topics([topic])
-        print(f"✅ Created topic '{KAFKA_TOPIC_NETWORK_DATA}'")
+        print(f"Created topic '{KAFKA_TOPIC_NETWORK_DATA}'")
         
     except Exception as e:
-        print(f"❌ Failed to create topic: {e}")
+        print(f"Failed to create topic: {e}")
     finally:
         admin_client.close()

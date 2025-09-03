@@ -24,7 +24,7 @@ class DataProcessor:
         self.start_date = self.end_date - timedelta(days=self.days)  # Go back N complete days
 
     def get_data_from_db(self) ->  pd.DataFrame:                
-        print(f"📅 Getting data from {self.start_date.strftime('%Y-%m-%d')} to {self.end_date.strftime('%Y-%m-%d')} (excluding today)")
+        print(f"Getting data from {self.start_date.strftime('%Y-%m-%d')} to {self.end_date.strftime('%Y-%m-%d')} (excluding today)")
         
         # Query data
         query = f"""

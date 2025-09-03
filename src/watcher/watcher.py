@@ -65,9 +65,9 @@ def watcher_thread_func(kafka_producer: KafkaNetworkProducer):
             success = kafka_producer.send_network_data(current_timestamp, result)
             
             if success:
-                print(f"✅ Sent data to Kafka: {current_timestamp.strftime('%H:%M:%S')}")
+                print(f"Sent data to Kafka: {current_timestamp.strftime('%H:%M:%S')}")
             else:
-                print(f"❌ Failed to send to Kafka: {current_timestamp.strftime('%H:%M:%S')}")
+                print(f"Failed to send to Kafka: {current_timestamp.strftime('%H:%M:%S')}")
                 
     except KeyboardInterrupt:
         print("Watcher stopping...")
